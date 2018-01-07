@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="xyz.htooaungnaing.burpplefoodplaces.activities.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="253dp"
+        android:theme="@style/AppTheme.NoActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="256dp"
+            app:contentScrim="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_burpple_food_places_highlight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:id="@+id/rl_burpple_food_places"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundColor">
+
+
+            <TextView
+                android:id="@+id/tv_featured"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="30dp"
+                android:text="FEATURED"
+                android:textSize="@dimen/featured"/>
+
+            <TextView
+                android:id="@+id/tv_promotions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_featured"
+                android:layout_below="@id/tv_featured"
+                android:layout_marginTop="8dp"
+                android:text="Promotions"
+                android:textSize="@dimen/title"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/btn_featured_see_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/tv_promotions"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:text="See More"
+                android:textSize="@dimen/see_more"
+                android:textColor="@color/colorAccent"/>
+            
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_promotions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_promotions"
+                android:layout_marginTop="32dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_burpple_guides_latest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_featured"
+                android:layout_below="@id/rv_promotions"
+                android:layout_marginTop="32dp"
+                android:text="LATEST"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/featured"/>
+
+            <TextView
+                android:id="@+id/tv_burpple_guides"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_promotions"
+                android:layout_below="@id/tv_burpple_guides_latest"
+                android:layout_marginTop="8dp"
+                android:text="Burpple Guides"
+                android:textColor="@color/black"
+                android:textSize="@dimen/title"/>
+
+            <TextView
+                android:id="@+id/btn_burpple_guides_see_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/tv_burpple_guides"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:text="See More"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/featured"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_burpple_guides"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_burpple_guides"
+                android:layout_marginTop="32dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_new_n_trending_latest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_featured"
+                android:layout_below="@id/rv_burpple_guides"
+                android:layout_marginTop="36dp"
+                android:text="LATEST"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/featured"/>
+
+            <TextView
+                android:id="@+id/tv_new_n_trending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_promotions"
+                android:layout_below="@id/tv_new_n_trending_latest"
+                android:layout_marginTop="8dp"
+                android:text="New &amp; Trending"
+                android:textColor="@color/black"
+                android:textSize="@dimen/title"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_new_n_trending"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_new_n_trending"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_explore_neighbourhoods"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Explore Neighbourhoods"
+                android:layout_below="@id/rv_new_n_trending"
+                android:layout_marginTop="32dp"
+                android:drawableLeft="@drawable/ic_location_on_grey_32dp"
+                android:layout_alignLeft="@id/tv_promotions"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:textSize="@dimen/explore"
+                />
+
+            <TextView
+                android:id="@+id/tv_explore_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Explore Categories"
+                android:layout_below="@id/tv_explore_neighbourhoods"
+                android:drawableLeft="@drawable/ic_restaurant_grey_24dp"
+                android:layout_alignLeft="@id/tv_promotions"
+                android:layout_marginBottom="16dp"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:layout_marginTop="16dp"
+                android:textSize="@dimen/explore"
+                />
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+    <!--android:id="@+id/fab"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="bottom|end"-->
+    <!--android:layout_margin="@dimen/fab_margin"-->
+    <!--app:srcCompat="@android:drawable/ic_dialog_email" />-->
+
+</android.support.design.widget.CoordinatorLayout>
