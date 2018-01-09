@@ -14,7 +14,8 @@ import butterknife.ButterKnife;
 import xyz.htooaungnaing.burpplefoodplaces.R;
 import xyz.htooaungnaing.burpplefoodplaces.adapters.ItemBurppleFoodPlacesHighlightsAdapter;
 import xyz.htooaungnaing.burpplefoodplaces.adapters.ItemBurppleGuidesAdapter;
-import xyz.htooaungnaing.burpplefoodplaces.adapters.ItemNewNTrendingAdapter;
+import xyz.htooaungnaing.burpplefoodplaces.adapters.ItemNewsAndTrendingNewsAdapter;
+import xyz.htooaungnaing.burpplefoodplaces.adapters.ItemNewsAndTrendingTrendingAdapter;
 import xyz.htooaungnaing.burpplefoodplaces.adapters.ItemPromotionsAdapter;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,20 +29,24 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.rv_burpple_guides)
     RecyclerView rvBurppleGuides;
 
-    @BindView(R.id.rv_new_n_trending)
-    RecyclerView rvNewNTrending;
+    @BindView(R.id.rv_news_and_trending_news)
+    RecyclerView rvNewsAndTrendingNews;
+
+    @BindView(R.id.rv_news_and_trending_trending)
+    RecyclerView rvNewsAndTrendingTrending;
 
     private ItemBurppleFoodPlacesHighlightsAdapter mItemBurppleFoodPlacesHighlightsAdapter;
     private ItemPromotionsAdapter mItemPromotionsAdapter;
     private ItemBurppleGuidesAdapter mItemBurppleGuidesAdapter;
-    private ItemNewNTrendingAdapter mItemNewNTrendingAdapter;
+    private ItemNewsAndTrendingNewsAdapter mItemNewsAndTrendingNewsAdapter;
+    private ItemNewsAndTrendingTrendingAdapter mItemNewsAndTrendingTrendingAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
 
         ButterKnife.bind(this,this);
 
@@ -67,10 +72,15 @@ public class MainActivity extends AppCompatActivity {
         rvBurppleGuides.setLayoutManager(rvBurppleGuidesLayoutManager);
         rvBurppleGuides.setAdapter(mItemBurppleGuidesAdapter);
 
-        mItemNewNTrendingAdapter = new ItemNewNTrendingAdapter();
-        LinearLayoutManager rvItemNewNTrendingLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL,false);
-        rvNewNTrending.setLayoutManager(rvItemNewNTrendingLayoutManager);
-        rvNewNTrending.setAdapter(mItemNewNTrendingAdapter);
+        mItemNewsAndTrendingNewsAdapter = new ItemNewsAndTrendingNewsAdapter();
+        LinearLayoutManager rvItemNewsAndTrendingLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
+        rvNewsAndTrendingNews.setLayoutManager(rvItemNewsAndTrendingLayoutManager);
+        rvNewsAndTrendingNews.setAdapter(mItemNewsAndTrendingNewsAdapter);
+
+        mItemNewsAndTrendingTrendingAdapter = new ItemNewsAndTrendingTrendingAdapter();
+        LinearLayoutManager newsAndTrendingTrendingsLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
+        rvNewsAndTrendingTrending.setLayoutManager(newsAndTrendingTrendingsLayoutManager);
+        rvNewsAndTrendingTrending.setAdapter(mItemNewsAndTrendingTrendingAdapter);
 
     }
 

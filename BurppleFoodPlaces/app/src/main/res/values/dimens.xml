@@ -7,4 +7,5 @@
     <dimen name="new_n_trending_content_title">16sp</dimen>
     <dimen name="drawable_padding">24dp</dimen>
     <dimen name="explore">16sp</dimen>
+    <dimen name="app_title">24sp</dimen>
 </resources>

@@ -3,11 +3,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/iv_foods_highlight"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/foodhighlight"
-        android:scaleType="centerCrop"/>
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_foods_highlight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/foodhighlight"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/tv_highlight_features"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FEATURES"
+            android:layout_centerInParent="true"
+            android:textColor="@color/lightGreen"
+            android:background="@drawable/item_burpple_food_places_shape"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_highlight_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A Tasty Walk In A Park"
+            android:layout_below="@id/tv_highlight_features"
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:textStyle="italic|bold"
+            android:textSize="@dimen/app_title"
+            />
+
+        <TextView
+            android:id="@+id/tv_highlight_content"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="Savourworld  puts 20 restaurants together on the science park map"
+            android:layout_below="@id/tv_highlight_title"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="italic"/>
+
+    </RelativeLayout>
+
+
 
 </xyz.htooaungnaing.burpplefoodplaces.viewitems.ItemImageInBurppleFoodPlacesHighlightViewItem>

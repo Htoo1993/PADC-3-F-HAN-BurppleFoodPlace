@@ -7,21 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import xyz.htooaungnaing.burpplefoodplaces.R;
-import xyz.htooaungnaing.burpplefoodplaces.viewholders.ItemNewNTrendingViewHolder;
+import xyz.htooaungnaing.burpplefoodplaces.viewholders.ItemNewsAndTrendingNewsViewHolder;
 
 /**
- * Created by htoo on 1/6/2018.
+ * Created by htoo on 1/8/2018.
  */
 
-public class ItemNewNTrendingAdapter extends RecyclerView.Adapter {
+public class ItemNewsAndTrendingNewsAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.item_new_n_trending,parent,false);
-        ItemNewNTrendingViewHolder itemNewNTrendingViewHolder = new ItemNewNTrendingViewHolder(view);
-
-        return itemNewNTrendingViewHolder;
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.item_news_and_tending_news,parent,false);
+        ItemNewsAndTrendingNewsViewHolder itemNewsAndTrendingNewsViewHolder = new ItemNewsAndTrendingNewsViewHolder(view);
+        return itemNewsAndTrendingNewsViewHolder;
     }
 
     @Override
@@ -31,6 +30,6 @@ public class ItemNewNTrendingAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }

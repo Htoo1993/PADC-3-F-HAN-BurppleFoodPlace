@@ -13,5 +13,54 @@
             android:scaleType="centerCrop"
             android:src="@drawable/burppleguide"
             android:layout_marginLeft="16dp"/>
+
+        <TextView
+            android:id="@+id/tv_taste_maker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TASTEMAKERS GUIDE TO"
+            android:layout_marginTop="32dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="6sp"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/tv_best_hawkers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BEST HAWKERS IN"
+            android:layout_below="@id/tv_taste_maker"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            android:textSize="9sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_china_town"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CHINATOWN"
+            android:layout_below="@id/tv_best_hawkers"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:textStyle="bold|italic"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_burpple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="burpple"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tv_china_town"
+            android:layout_marginTop="24dp"
+            android:drawableLeft="@drawable/burpple_icon"
+            android:textColor="@color/white"
+            android:drawablePadding="8dp"
+            />
     </RelativeLayout>
 </android.support.v7.widget.CardView>

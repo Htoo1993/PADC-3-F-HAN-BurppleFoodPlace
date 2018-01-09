@@ -19,11 +19,36 @@
             app:contentScrim="@color/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+
             <android.support.v4.view.ViewPager
                 android:id="@+id/vp_burpple_food_places_highlight"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fitsSystemWindows="true"/>
+                android:fitsSystemWindows="true" />
+
+            <TextView
+                android:id="@+id/tv_burpple_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="burpple"
+                android:textColor="@color/white"
+                android:textSize="@dimen/app_title"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="40dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/ic_search_24dp"
+                android:drawablePadding="16dp"
+                android:hint="Search e.g. Japanese in Orchard"
+                android:padding="12dp" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -45,7 +70,7 @@
             android:id="@+id/rl_burpple_food_places"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/backgroundColor">
+            android:background="@color/white">
 
 
             <TextView
@@ -53,9 +78,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="40dp"
                 android:text="FEATURED"
-                android:textSize="@dimen/featured"/>
+                android:textSize="@dimen/featured" />
 
             <TextView
                 android:id="@+id/tv_promotions"
@@ -65,8 +90,8 @@
                 android:layout_below="@id/tv_featured"
                 android:layout_marginTop="8dp"
                 android:text="Promotions"
-                android:textSize="@dimen/title"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/title" />
 
             <TextView
                 android:id="@+id/btn_featured_see_more"
@@ -76,16 +101,15 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="16dp"
                 android:text="See More"
-                android:textSize="@dimen/see_more"
-                android:textColor="@color/colorAccent"/>
-            
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/see_more" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_promotions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_promotions"
-                android:layout_marginTop="32dp"
-                />
+                android:layout_marginTop="32dp" />
 
             <TextView
                 android:id="@+id/tv_burpple_guides_latest"
@@ -96,7 +120,7 @@
                 android:layout_marginTop="32dp"
                 android:text="LATEST"
                 android:textColor="@color/grey"
-                android:textSize="@dimen/featured"/>
+                android:textSize="@dimen/featured" />
 
             <TextView
                 android:id="@+id/tv_burpple_guides"
@@ -107,7 +131,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Burpple Guides"
                 android:textColor="@color/black"
-                android:textSize="@dimen/title"/>
+                android:textSize="@dimen/title" />
 
             <TextView
                 android:id="@+id/btn_burpple_guides_see_more"
@@ -118,15 +142,14 @@
                 android:layout_marginRight="16dp"
                 android:text="See More"
                 android:textColor="@color/colorAccent"
-                android:textSize="@dimen/featured"/>
+                android:textSize="@dimen/featured" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_burpple_guides"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_burpple_guides"
-                android:layout_marginTop="32dp"
-                />
+                android:layout_marginTop="32dp" />
 
             <TextView
                 android:id="@+id/tv_new_n_trending_latest"
@@ -137,7 +160,7 @@
                 android:layout_marginTop="36dp"
                 android:text="LATEST"
                 android:textColor="@color/grey"
-                android:textSize="@dimen/featured"/>
+                android:textSize="@dimen/featured" />
 
             <TextView
                 android:id="@+id/tv_new_n_trending"
@@ -148,43 +171,163 @@
                 android:layout_marginTop="8dp"
                 android:text="New &amp; Trending"
                 android:textColor="@color/black"
-                android:textSize="@dimen/title"/>
+                android:textSize="@dimen/title" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_new_n_trending"
-                android:layout_width="match_parent"
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_news"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_new_n_trending"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                app:cardElevation="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_trending_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="24dp"
+                        android:text="Newly Opened"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/new_n_trending_content_title" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_news_and_trending_news"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_trending_title"
+                        android:layout_alignLeft="@id/tv_trending_title"
+                        android:layout_marginTop="16dp" />
+
+                    <View
+                        android:id="@+id/v_news_and_trending_news"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_below="@id/rv_news_and_trending_news"
+                        android:layout_marginTop="24dp"
+                        android:background="@color/grey"
+                        />
+                    <TextView
+                        android:id="@+id/tv_news_and_trending_news_explore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/tv_trending_title"
+                        android:layout_below="@id/rv_news_and_trending_news"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="32dp"
+                        android:text="EXPLORE" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_trending"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/cv_news"
+                android:layout_toRightOf="@id/cv_news"
+                android:layout_marginLeft="16dp"
+                app:cardElevation="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_trending_title_trending"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="24dp"
+                        android:text="Trending Venues"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/new_n_trending_content_title" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_news_and_trending_trending"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_trending_title_trending"
+                        android:layout_alignLeft="@id/tv_trending_title_trending"
+                        android:layout_marginTop="16dp" />
+
+                    <View
+                        android:id="@+id/v_news_and_trending_trending"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_below="@id/rv_news_and_trending_trending"
+                        android:layout_marginTop="24dp"
+                        android:background="@color/grey" />
+
+                    <TextView
+                        android:id="@+id/tv_news_and_trending_trending_explore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/rv_news_and_trending_trending"
+                        android:layout_below="@id/rv_news_and_trending_trending"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="32dp"
+                        android:text="EXPLORE" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <View
+                android:id="@+id/v_upper_neighbouthood"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/cv_news"
                 android:layout_marginTop="32dp"
-                android:layout_marginBottom="16dp"
-                />
+                android:background="@color/grey"/>
 
             <TextView
                 android:id="@+id/tv_explore_neighbourhoods"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Explore Neighbourhoods"
-                android:layout_below="@id/rv_new_n_trending"
-                android:layout_marginTop="32dp"
-                android:drawableLeft="@drawable/ic_location_on_grey_32dp"
                 android:layout_alignLeft="@id/tv_promotions"
+                android:layout_below="@id/cv_news"
+                android:layout_marginTop="48dp"
+                android:drawableLeft="@drawable/ic_location_on_grey_32dp"
                 android:drawablePadding="@dimen/drawable_padding"
+                android:text="Explore Neighbourhoods"
                 android:textSize="@dimen/explore"
                 />
+
+            <View
+                android:id="@+id/v_between_neighbouthood_categories"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/tv_explore_neighbourhoods"
+                android:layout_marginTop="16dp"
+                android:background="@color/grey"/>
 
             <TextView
                 android:id="@+id/tv_explore_categories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Explore Categories"
-                android:layout_below="@id/tv_explore_neighbourhoods"
-                android:drawableLeft="@drawable/ic_restaurant_grey_24dp"
                 android:layout_alignLeft="@id/tv_promotions"
-                android:layout_marginBottom="16dp"
-                android:drawablePadding="@dimen/drawable_padding"
+                android:layout_below="@id/v_between_neighbouthood_categories"
                 android:layout_marginTop="16dp"
-                android:textSize="@dimen/explore"
-                />
+                android:drawableLeft="@drawable/ic_restaurant_grey_24dp"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:text="Explore Categories"
+                android:textSize="@dimen/explore" />
+
+            <View
+                android:id="@+id/v_below_categories"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/tv_explore_categories"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp"
+                android:background="@color/grey"/>
 
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
