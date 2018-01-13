@@ -6,17 +6,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import xyz.htooaungnaing.burpplefoodplaces.BurppleFoodPlacesApp;
 import xyz.htooaungnaing.burpplefoodplaces.R;
 import xyz.htooaungnaing.burpplefoodplaces.adapters.ItemBurppleFoodPlacesHighlightsAdapter;
 import xyz.htooaungnaing.burpplefoodplaces.adapters.ItemBurppleGuidesAdapter;
 import xyz.htooaungnaing.burpplefoodplaces.adapters.ItemNewsAndTrendingNewsAdapter;
 import xyz.htooaungnaing.burpplefoodplaces.adapters.ItemNewsAndTrendingTrendingAdapter;
 import xyz.htooaungnaing.burpplefoodplaces.adapters.ItemPromotionsAdapter;
+import xyz.htooaungnaing.burpplefoodplaces.data.model.FeaturedModel;
+import xyz.htooaungnaing.burpplefoodplaces.data.model.GuidesModel;
+import xyz.htooaungnaing.burpplefoodplaces.data.model.PromotionsModel;
+import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodGuidesEvent;
+import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodHighlightEvent;
+import xyz.htooaungnaing.burpplefoodplaces.events.LoadedGoodPromotionsEvent;
+import xyz.htooaungnaing.burpplefoodplaces.network.GuidesDataAgent;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -82,6 +95,22 @@ public class MainActivity extends AppCompatActivity {
         rvNewsAndTrendingTrending.setLayoutManager(newsAndTrendingTrendingsLayoutManager);
         rvNewsAndTrendingTrending.setAdapter(mItemNewsAndTrendingTrendingAdapter);
 
+        FeaturedModel.getsObjInstance().loadFoodHighlight();
+        GuidesModel.getsObjInstance().loadFoodGuides();
+        PromotionsModel.getsObjInstance().loadedFoodPromotion();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -104,5 +133,23 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onFoodHighlightLoaded(LoadedFoodHighlightEvent event){
+        Log.d(BurppleFoodPlacesApp.LOG_TAG, "onNewsLoaded : " + event.getFoodHighlightList().size());
+        mItemBurppleFoodPlacesHighlightsAdapter.setFoodHighLight(event.getFoodHighlightList());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onFoodGuidesLoaded(LoadedFoodGuidesEvent event){
+        Log.d(BurppleFoodPlacesApp.LOG_TAG, "on Food Guides : " + event.getGuidesVOList().size());
+        mItemBurppleGuidesAdapter.setFoodGuides(event.getGuidesVOList());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onFoodPromotionLoaded(LoadedGoodPromotionsEvent event){
+        Log.d(BurppleFoodPlacesApp.LOG_TAG, "on Promotion Guides : " + event.getPromotions().size());
+        mItemPromotionsAdapter.setFoodPromotion(event.getPromotions());
     }
 }

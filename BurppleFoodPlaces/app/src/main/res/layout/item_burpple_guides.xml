@@ -40,7 +40,7 @@
 
         <TextView
             android:id="@+id/tv_china_town"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="CHINATOWN"
             android:layout_below="@id/tv_best_hawkers"
@@ -48,6 +48,7 @@
             android:textColor="@color/white"
             android:textStyle="bold|italic"
             android:textSize="16sp"
+            android:maxLines="2"
             />
 
         <TextView
