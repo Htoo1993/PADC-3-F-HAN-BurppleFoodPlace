@@ -3,6 +3,7 @@ package xyz.htooaungnaing.burpplefoodplaces.data.model;
 import xyz.htooaungnaing.burpplefoodplaces.data.vo.GuidesVO;
 import xyz.htooaungnaing.burpplefoodplaces.network.GuidesDataAgent;
 import xyz.htooaungnaing.burpplefoodplaces.network.GuidesOkHttpDataAgent;
+import xyz.htooaungnaing.burpplefoodplaces.network.GuidesRetrofitDataAgent;
 
 /**
  * Created by htoo on 1/13/2018.
@@ -13,7 +14,8 @@ public class GuidesModel {
     private GuidesDataAgent mGuidesDataAgent;
 
     private GuidesModel(){
-        mGuidesDataAgent = GuidesOkHttpDataAgent.getsObjInstance();
+//        mGuidesDataAgent = GuidesOkHttpDataAgent.getsObjInstance();
+        mGuidesDataAgent = GuidesRetrofitDataAgent.getsObjInstance();
     }
 
     public static GuidesModel getsObjInstance() {

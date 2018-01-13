@@ -24,7 +24,7 @@ import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodHighlightRes
 public class RetrofitDataAgent implements BurppleFoodDataAgent {
 
     private static RetrofitDataAgent sObjInstance;
-    private BurppleFoodApi mBurppleFoodApi;
+    private BurppleFoodHighlightApi mBurppleFoodApi;
 
     private RetrofitDataAgent() {
         OkHttpClient httpClient = new OkHttpClient.Builder() //1
@@ -39,7 +39,7 @@ public class RetrofitDataAgent implements BurppleFoodDataAgent {
                 .client(httpClient)
                 .build();
 
-        mBurppleFoodApi = retrofit.create(BurppleFoodApi.class);
+        mBurppleFoodApi = retrofit.create(BurppleFoodHighlightApi.class);
     }
 
     public static RetrofitDataAgent getsObjInstance() {

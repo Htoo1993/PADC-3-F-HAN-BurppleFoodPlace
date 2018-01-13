@@ -28,8 +28,7 @@ import xyz.htooaungnaing.burpplefoodplaces.data.model.GuidesModel;
 import xyz.htooaungnaing.burpplefoodplaces.data.model.PromotionsModel;
 import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodGuidesEvent;
 import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodHighlightEvent;
-import xyz.htooaungnaing.burpplefoodplaces.events.LoadedGoodPromotionsEvent;
-import xyz.htooaungnaing.burpplefoodplaces.network.GuidesDataAgent;
+import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodPromotionsEvent;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -148,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onFoodPromotionLoaded(LoadedGoodPromotionsEvent event){
+    public void onFoodPromotionLoaded(LoadedFoodPromotionsEvent event){
         Log.d(BurppleFoodPlacesApp.LOG_TAG, "on Promotion Guides : " + event.getPromotions().size());
         mItemPromotionsAdapter.setFoodPromotion(event.getPromotions());
     }

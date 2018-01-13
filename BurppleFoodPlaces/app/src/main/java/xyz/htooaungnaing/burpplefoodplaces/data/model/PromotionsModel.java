@@ -1,6 +1,7 @@
 package xyz.htooaungnaing.burpplefoodplaces.data.model;
 
 import xyz.htooaungnaing.burpplefoodplaces.network.PromotionDataAgent;
+import xyz.htooaungnaing.burpplefoodplaces.network.PromotionRetrofitDataAgent;
 import xyz.htooaungnaing.burpplefoodplaces.network.PromotionsOkHttpDataAgent;
 
 /**
@@ -13,7 +14,8 @@ public class PromotionsModel {
     private PromotionDataAgent mPromotionDataAgent;
 
     private PromotionsModel(){
-        mPromotionDataAgent = PromotionsOkHttpDataAgent.getsObjInstance();
+//        mPromotionDataAgent = PromotionsOkHttpDataAgent.getsObjInstance();
+        mPromotionDataAgent = PromotionRetrofitDataAgent.getsObjInstance();
     }
 
     public static PromotionsModel getsObjInstance() {

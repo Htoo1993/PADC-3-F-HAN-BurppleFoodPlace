@@ -16,9 +16,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import xyz.htooaungnaing.burpplefoodplaces.BurppleFoodPlacesApp;
-import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodGuidesEvent;
-import xyz.htooaungnaing.burpplefoodplaces.events.LoadedGoodPromotionsEvent;
-import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodGuidesResponse;
+import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodPromotionsEvent;
 import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodPromotionsResponse;
 
 /**
@@ -88,7 +86,7 @@ public class PromotionsOkHttpDataAgent implements PromotionDataAgent {
             Gson gson = new Gson();
             GetFoodPromotionsResponse getFoodPromotionsResponse = gson.fromJson(response,GetFoodPromotionsResponse.class);
 
-            EventBus.getDefault().post(new LoadedGoodPromotionsEvent(getFoodPromotionsResponse.getPromotions()));
+            EventBus.getDefault().post(new LoadedFoodPromotionsEvent(getFoodPromotionsResponse.getPromotions()));
         }
     }
 

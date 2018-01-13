@@ -10,7 +10,7 @@ import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodHighlightRes
  * Created by htoo on 1/13/2018.
  */
 
-public interface BurppleFoodApi {
+public interface BurppleFoodHighlightApi {
 
     @FormUrlEncoded
     @POST("getFeatured.php")

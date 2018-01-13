@@ -8,10 +8,10 @@ import xyz.htooaungnaing.burpplefoodplaces.data.vo.PromotionVO;
  * Created by htoo on 1/14/2018.
  */
 
-public class LoadedGoodPromotionsEvent {
+public class LoadedFoodPromotionsEvent {
     private List<PromotionVO> promotions;
 
-    public LoadedGoodPromotionsEvent(List<PromotionVO> promotions) {
+    public LoadedFoodPromotionsEvent(List<PromotionVO> promotions) {
         this.promotions = promotions;
     }
 
