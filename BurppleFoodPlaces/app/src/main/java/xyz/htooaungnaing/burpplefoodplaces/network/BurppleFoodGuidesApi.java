@@ -13,6 +13,6 @@ import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodGuidesRespon
 public interface BurppleFoodGuidesApi {
     @FormUrlEncoded
     @POST("getGuides.php")
-    Call<GetFoodGuidesResponse> getFoods(@Field("page") int page,
-                                        @Field("access_token") String accessToken);
+    Call<GetFoodGuidesResponse> getGuides(@Field("page") int page,
+                                          @Field("access_token") String accessToken);
 }

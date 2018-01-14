@@ -14,6 +14,8 @@ public interface BurppleFoodPromotionApi{
 
     @FormUrlEncoded
     @POST("getPromotions.php")
-    Call<GetFoodPromotionsResponse> getFoods(@Field("page") int page,
-                                             @Field("access_token") String accessToken);
+    Call<GetFoodPromotionsResponse> getPromotion(@Field("page") int page,
+                                                 @Field("access_token") String accessToken);
+
+
 }

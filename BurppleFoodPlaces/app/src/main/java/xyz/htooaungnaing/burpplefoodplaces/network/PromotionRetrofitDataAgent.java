@@ -14,9 +14,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodGuidesEvent;
 import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodPromotionsEvent;
-import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodGuidesResponse;
 import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodPromotionsResponse;
 
 /**
@@ -53,7 +51,7 @@ public class PromotionRetrofitDataAgent implements PromotionDataAgent {
 
     @Override
     public void loadPromotion() {
-        Call<GetFoodPromotionsResponse> getFoodPromotionsResponseCall = mBurppleFoodPromotionApi.getFoods(1,"b002c7e1a528b7cb460933fc2875e916");
+        Call<GetFoodPromotionsResponse> getFoodPromotionsResponseCall = mBurppleFoodPromotionApi.getPromotion(1,"b002c7e1a528b7cb460933fc2875e916");
         getFoodPromotionsResponseCall.enqueue(new Callback<GetFoodPromotionsResponse>() {
             @Override
             public void onResponse(Call<GetFoodPromotionsResponse> call, Response<GetFoodPromotionsResponse> response) {

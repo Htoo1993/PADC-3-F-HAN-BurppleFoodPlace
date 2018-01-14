@@ -51,7 +51,7 @@ public class GuidesRetrofitDataAgent implements GuidesDataAgent {
 
     @Override
     public void loadGuides() {
-        Call<GetFoodGuidesResponse> getFoodGuidesResponseCall = mBurppleFoodGuidesApi.getFoods(1,"b002c7e1a528b7cb460933fc2875e916");
+        Call<GetFoodGuidesResponse> getFoodGuidesResponseCall = mBurppleFoodGuidesApi.getGuides(1,"b002c7e1a528b7cb460933fc2875e916");
         getFoodGuidesResponseCall.enqueue(new Callback<GetFoodGuidesResponse>() {
             @Override
             public void onResponse(Call<GetFoodGuidesResponse> call, Response<GetFoodGuidesResponse> response) {

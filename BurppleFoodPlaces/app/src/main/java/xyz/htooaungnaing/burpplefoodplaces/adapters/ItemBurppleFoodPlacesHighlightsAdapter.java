@@ -42,6 +42,8 @@ public class ItemBurppleFoodPlacesHighlightsAdapter extends PagerAdapter {
         ItemImageInBurppleFoodPlacesHighlightViewItem viewItem = (ItemImageInBurppleFoodPlacesHighlightViewItem)layoutInflater.inflate(R.layout.item_burpple_food_places_highlight,container,false);
         container.addView(viewItem);
 
+        viewItem.setData(mFoodHighlightList.get(position).getBurppleFeaturedImage());
+
         return viewItem;
     }
 
