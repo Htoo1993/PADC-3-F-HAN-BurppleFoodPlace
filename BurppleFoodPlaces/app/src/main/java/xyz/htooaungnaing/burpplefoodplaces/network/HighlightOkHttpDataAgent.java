@@ -23,16 +23,16 @@ import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodHighlightRes
  * Created by htoo on 1/12/2018.
  */
 
-public class FoodHighlightOkHttpDataAgent implements BurppleFoodDataAgent {
+public class HighlightOkHttpDataAgent implements HighlightDataAgent {
 
-    private static FoodHighlightOkHttpDataAgent sObjInstance;
+    private static HighlightOkHttpDataAgent sObjInstance;
 
-    private FoodHighlightOkHttpDataAgent() {
+    private HighlightOkHttpDataAgent() {
     }
 
-    public static FoodHighlightOkHttpDataAgent getsObjInstance() {
+    public static HighlightOkHttpDataAgent getsObjInstance() {
         if(sObjInstance == null){
-            sObjInstance = new FoodHighlightOkHttpDataAgent();
+            sObjInstance = new HighlightOkHttpDataAgent();
         }
         return sObjInstance;
     }

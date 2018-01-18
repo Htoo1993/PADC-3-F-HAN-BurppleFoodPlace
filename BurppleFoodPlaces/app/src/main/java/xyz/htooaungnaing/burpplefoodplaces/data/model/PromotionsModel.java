@@ -1,8 +1,7 @@
 package xyz.htooaungnaing.burpplefoodplaces.data.model;
 
 import xyz.htooaungnaing.burpplefoodplaces.network.PromotionDataAgent;
-import xyz.htooaungnaing.burpplefoodplaces.network.PromotionRetrofitDataAgent;
-import xyz.htooaungnaing.burpplefoodplaces.network.PromotionsOkHttpDataAgent;
+import xyz.htooaungnaing.burpplefoodplaces.network.RetrofitDataAgent;
 
 /**
  * Created by htoo on 1/14/2018.
@@ -15,7 +14,7 @@ public class PromotionsModel {
 
     private PromotionsModel(){
 //        mPromotionDataAgent = PromotionsOkHttpDataAgent.getsObjInstance();
-        mPromotionDataAgent = PromotionRetrofitDataAgent.getsObjInstance();
+        mPromotionDataAgent = RetrofitDataAgent.getsObjInstance();
     }
 
     public static PromotionsModel getsObjInstance() {

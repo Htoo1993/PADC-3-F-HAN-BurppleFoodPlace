@@ -1,7 +1,6 @@
 package xyz.htooaungnaing.burpplefoodplaces.data.model;
 
-import xyz.htooaungnaing.burpplefoodplaces.network.BurppleFoodDataAgent;
-import xyz.htooaungnaing.burpplefoodplaces.network.FoodHighlightOkHttpDataAgent;
+import xyz.htooaungnaing.burpplefoodplaces.network.HighlightDataAgent;
 import xyz.htooaungnaing.burpplefoodplaces.network.RetrofitDataAgent;
 
 /**
@@ -11,11 +10,11 @@ import xyz.htooaungnaing.burpplefoodplaces.network.RetrofitDataAgent;
 public class FeaturedModel {
 
     private static FeaturedModel sObjInstance;
-    private BurppleFoodDataAgent mFoodHighlightDataAgent;
+    private HighlightDataAgent mFoodHighlightDataAgent;
 
     private FeaturedModel() {
-        mFoodHighlightDataAgent = FoodHighlightOkHttpDataAgent.getsObjInstance();
-//        mFoodHighlightDataAgent = RetrofitDataAgent.getsObjInstance();
+//        mFoodHighlightDataAgent = HighlightOkHttpDataAgent.getsObjInstance();
+        mFoodHighlightDataAgent = RetrofitDataAgent.getsObjInstance();
     }
 
     public static FeaturedModel getsObjInstance() {
