@@ -1,7 +1,11 @@
 package xyz.htooaungnaing.burpplefoodplaces.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,11 +30,13 @@ import xyz.htooaungnaing.burpplefoodplaces.adapters.ItemPromotionsAdapter;
 import xyz.htooaungnaing.burpplefoodplaces.data.model.FeaturedModel;
 import xyz.htooaungnaing.burpplefoodplaces.data.model.GuidesModel;
 import xyz.htooaungnaing.burpplefoodplaces.data.model.PromotionsModel;
+import xyz.htooaungnaing.burpplefoodplaces.delegates.BeforeLoginDelegate;
 import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodGuidesEvent;
 import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodHighlightEvent;
 import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodPromotionsEvent;
+import xyz.htooaungnaing.burpplefoodplaces.viewpods.BeforeLoginUserViewPod;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BeforeLoginDelegate{
 
     @BindView(R.id.vp_burpple_food_places_highlight)
     ViewPager vpBurppleFoodPlacesHighlight;
@@ -47,18 +53,26 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.rv_news_and_trending_trending)
     RecyclerView rvNewsAndTrendingTrending;
 
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
+
+    @BindView(R.id.navigation_view)
+    NavigationView navigationView;
+
     private ItemBurppleFoodPlacesHighlightsAdapter mItemBurppleFoodPlacesHighlightsAdapter;
     private ItemPromotionsAdapter mItemPromotionsAdapter;
     private ItemBurppleGuidesAdapter mItemBurppleGuidesAdapter;
     private ItemNewsAndTrendingNewsAdapter mItemNewsAndTrendingNewsAdapter;
     private ItemNewsAndTrendingTrendingAdapter mItemNewsAndTrendingTrendingAdapter;
 
+    private BeforeLoginUserViewPod beforeLoginUserViewPod;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
 
         ButterKnife.bind(this,this);
 
@@ -70,6 +84,15 @@ public class MainActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_24dp);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        beforeLoginUserViewPod = (BeforeLoginUserViewPod) navigationView.getHeaderView(0);
+        beforeLoginUserViewPod.setDelegate(this);
+
 
         mItemBurppleFoodPlacesHighlightsAdapter = new ItemBurppleFoodPlacesHighlightsAdapter();
         vpBurppleFoodPlacesHighlight.setAdapter(mItemBurppleFoodPlacesHighlightsAdapter);
@@ -129,6 +152,8 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == android.R.id.home){
+            drawerLayout.openDrawer(GravityCompat.START);
         }
 
         return super.onOptionsItemSelected(item);
@@ -150,5 +175,17 @@ public class MainActivity extends AppCompatActivity {
     public void onFoodPromotionLoaded(LoadedFoodPromotionsEvent event){
         Log.d(BurppleFoodPlacesApp.LOG_TAG, "on Promotion Guides : " + event.getPromotions().size());
         mItemPromotionsAdapter.setFoodPromotion(event.getPromotions());
+    }
+
+    @Override
+    public void onTapLogin() {
+        Intent intent = SwitchAccountActivity.newIntentLogin(getApplicationContext());
+        startActivity(intent);
+    }
+
+    @Override
+    public void onTapRegister() {
+        Intent intent = SwitchAccountActivity.newIntentRegister(getApplicationContext());
+        startActivity(intent);
     }
 }

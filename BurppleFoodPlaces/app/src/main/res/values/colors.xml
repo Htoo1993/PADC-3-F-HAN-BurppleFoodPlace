@@ -10,4 +10,5 @@
     <color name="lightGreen">#75f769</color>
     <color name="darkGrey">#FF362D2D</color>
     <color name="yellow">#f1d718</color>
+    <color name="login_bg">#4d5871</color>
 </resources>

@@ -7,6 +7,7 @@ import retrofit2.http.POST;
 import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodGuidesResponse;
 import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodHighlightResponse;
 import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodPromotionsResponse;
+import xyz.htooaungnaing.burpplefoodplaces.network.responses.LoginUserResponse;
 
 /**
  * Created by htoo on 1/18/2018.
@@ -28,6 +29,11 @@ public interface BurppleFoodAPI {
     @POST("getGuides.php")
     Call<GetFoodGuidesResponse> getGuides(@Field("page") int page,
                                           @Field("access_token") String accessToken);
+
+    @FormUrlEncoded
+    @POST("login.php")
+    Call<LoginUserResponse> getLoginUserInfo(@Field("phoneNo") String phoneNo,
+                                             @Field("password") String password);
 
 
 }

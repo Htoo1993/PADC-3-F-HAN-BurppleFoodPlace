@@ -14,18 +14,21 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import xyz.htooaungnaing.burpplefoodplaces.BurppleFoodPlacesApp;
 import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodGuidesEvent;
 import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodHighlightEvent;
 import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodPromotionsEvent;
+import xyz.htooaungnaing.burpplefoodplaces.events.LoadedLoginUserEvent;
 import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodGuidesResponse;
 import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodHighlightResponse;
 import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodPromotionsResponse;
+import xyz.htooaungnaing.burpplefoodplaces.network.responses.LoginUserResponse;
 
 /**
  * Created by htoo on 1/13/2018.
  */
 
-public class RetrofitDataAgent implements HighlightDataAgent,PromotionDataAgent,GuidesDataAgent {
+public class RetrofitDataAgent implements HighlightDataAgent,PromotionDataAgent,GuidesDataAgent,BurppleFoodDataAgent {
 
     private static RetrofitDataAgent sObjInstance;
     private BurppleFoodAPI mBurppleFoodApi;
@@ -112,6 +115,28 @@ public class RetrofitDataAgent implements HighlightDataAgent,PromotionDataAgent,
 
             @Override
             public void onFailure(Call<GetFoodGuidesResponse> call, Throwable t) {
+                Log.d("", "onFailure : "+t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void loadLoginUser(String phoneNo, String password) {
+        Call<LoginUserResponse> getLoginUserCall = mBurppleFoodApi.getLoginUserInfo(phoneNo, password);
+        getLoginUserCall.enqueue(new Callback<LoginUserResponse>() {
+            @Override
+            public void onResponse(Call<LoginUserResponse> call, Response<LoginUserResponse> response) {
+                LoginUserResponse getLoginUserResponse = response.body();
+
+                if(getLoginUserResponse != null){
+                    Log.d(BurppleFoodPlacesApp.LOG_TAG,"Login user info : " + getLoginUserResponse);
+                    LoadedLoginUserEvent event = new LoadedLoginUserEvent(getLoginUserResponse.getLoginUser());
+                    EventBus.getDefault().post(event);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginUserResponse> call, Throwable t) {
                 Log.d("", "onFailure : "+t.getMessage());
             }
         });
