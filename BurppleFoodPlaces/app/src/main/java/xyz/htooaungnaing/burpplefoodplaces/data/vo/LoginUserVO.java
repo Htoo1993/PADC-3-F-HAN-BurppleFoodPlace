@@ -16,12 +16,6 @@ public class LoginUserVO {
     private String profileUrl;
     private String coverUrl;
 
-    @SerializedName("fav_foods")
-    private List<FavouriteFoodVO> favouriteFoods;
-
-    @SerializedName("fav_food_places")
-    private List<FavouriteFoodPlaceVO> favouriteFoodPlaces;
-
     public int getUserId() {
         return userId;
     }
@@ -46,11 +40,4 @@ public class LoginUserVO {
         return coverUrl;
     }
 
-    public List<FavouriteFoodVO> getFavouriteFoods() {
-        return favouriteFoods;
-    }
-
-    public List<FavouriteFoodPlaceVO> getFavouriteFoodPlaces() {
-        return favouriteFoodPlaces;
-    }
 }

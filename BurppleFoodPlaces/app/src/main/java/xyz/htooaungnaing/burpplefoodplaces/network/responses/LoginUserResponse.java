@@ -21,6 +21,13 @@ public class LoginUserResponse {
     private LoginUserVO loginUser;
 
 
+    @SerializedName("fav_foods")
+    private List<FavouriteFoodVO> favouriteFoods;
+
+    @SerializedName("fav_food_places")
+    private List<FavouriteFoodPlaceVO> favouriteFoodPlaces;
+
+
     public int getCode() {
         return code;
     }
@@ -33,4 +40,11 @@ public class LoginUserResponse {
         return loginUser;
     }
 
+    public List<FavouriteFoodVO> getFavouriteFoods() {
+        return favouriteFoods;
+    }
+
+    public List<FavouriteFoodPlaceVO> getFavouriteFoodPlaces() {
+        return favouriteFoodPlaces;
+    }
 }

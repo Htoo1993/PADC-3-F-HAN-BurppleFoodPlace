@@ -18,7 +18,7 @@ public interface BurppleFoodAPI {
     @FormUrlEncoded
     @POST("getFeatured.php")
     Call<GetFoodHighlightResponse> getHighlight(@Field("page") int page,
-                                           @Field("access_token") String accessToken);
+                                                @Field("access_token") String accessToken);
 
     @FormUrlEncoded
     @POST("getPromotions.php")
@@ -34,6 +34,12 @@ public interface BurppleFoodAPI {
     @POST("login.php")
     Call<LoginUserResponse> getLoginUserInfo(@Field("phoneNo") String phoneNo,
                                              @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("register.php")
+    Call<LoginUserResponse> getRegister(@Field("phoneNo") String phoneNo,
+                                     @Field("password") String password,
+                                    @Field("name") String name);
 
 
 }

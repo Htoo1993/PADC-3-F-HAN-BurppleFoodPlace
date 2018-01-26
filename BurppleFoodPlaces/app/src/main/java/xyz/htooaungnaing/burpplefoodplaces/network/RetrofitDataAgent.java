@@ -18,7 +18,7 @@ import xyz.htooaungnaing.burpplefoodplaces.BurppleFoodPlacesApp;
 import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodGuidesEvent;
 import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodHighlightEvent;
 import xyz.htooaungnaing.burpplefoodplaces.events.LoadedFoodPromotionsEvent;
-import xyz.htooaungnaing.burpplefoodplaces.events.LoadedLoginUserEvent;
+import xyz.htooaungnaing.burpplefoodplaces.events.LoginUserEvent;
 import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodGuidesResponse;
 import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodHighlightResponse;
 import xyz.htooaungnaing.burpplefoodplaces.network.responses.GetFoodPromotionsResponse;
@@ -129,8 +129,30 @@ public class RetrofitDataAgent implements HighlightDataAgent,PromotionDataAgent,
                 LoginUserResponse getLoginUserResponse = response.body();
 
                 if(getLoginUserResponse != null){
-                    Log.d(BurppleFoodPlacesApp.LOG_TAG,"Login user info : " + getLoginUserResponse);
-                    LoadedLoginUserEvent event = new LoadedLoginUserEvent(getLoginUserResponse.getLoginUser());
+                    Log.d(BurppleFoodPlacesApp.LOG_TAG,"Login user info : " + getLoginUserResponse.getLoginUser().getName());
+                    LoginUserEvent event = new LoginUserEvent(getLoginUserResponse.getLoginUser());
+                    EventBus.getDefault().post(event);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginUserResponse> call, Throwable t) {
+                Log.d("", "onFailure : "+t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void loadRegister(String phoneNo, String password, String name) {
+        Call<LoginUserResponse> getRegisterCall = mBurppleFoodApi.getRegister(phoneNo, password, name);
+        getRegisterCall.enqueue(new Callback<LoginUserResponse>() {
+            @Override
+            public void onResponse(Call<LoginUserResponse> call, Response<LoginUserResponse> response) {
+                LoginUserResponse getRegister = response.body();
+
+                if(getRegister != null){
+                    Log.d(BurppleFoodPlacesApp.LOG_TAG,"Register info : " + getRegister.getLoginUser());
+                    LoginUserEvent event = new LoginUserEvent(getRegister.getLoginUser());
                     EventBus.getDefault().post(event);
                 }
             }

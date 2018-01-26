@@ -6,11 +6,11 @@ import xyz.htooaungnaing.burpplefoodplaces.data.vo.LoginUserVO;
  * Created by htoo on 1/25/2018.
  */
 
-public class LoadedLoginUserEvent {
+public class LoginUserEvent {
 
     private LoginUserVO loginUser;
 
-    public LoadedLoginUserEvent(LoginUserVO loginUser) {
+    public LoginUserEvent(LoginUserVO loginUser) {
         this.loginUser = loginUser;
     }
 
